@@ -1,5 +1,9 @@
 # Day6 - Notes API (Express + MongoDB)
 
+## Backend-Cohort Notes API (Day 6)
+
+This project is a simple backend to perform CRUD basics for notes using Express + MongoDB.
+
 A simple Notes REST API built using **Express** and **Mongoose**.
 
 ## Features
