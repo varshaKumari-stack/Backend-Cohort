@@ -1,8 +1,10 @@
 const express = require("express");
 const noteModel = require("./models/note.model");
 require("dotenv").config();
+const cors = require("cors");
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.post("/notes", async (req, res) => {
   const { title, desc } = req.body;
   const noteData = await noteModel.create({
@@ -22,12 +24,14 @@ app.get("/notes", async (req, res) => {
   });
 });
 app.delete("/notes/:id", async (req, res) => {
-  const id = req.params.id; //take a id from frontend side
-  const noteData = delete (await noteModel.findByIdAndDelete(id));
-  res.status(200).json({
-    message: "Delete Data Successfully.",
+  const id = req.params.id;
+  const note = await noteModel.findByIdAndDelete(id);
+
+  return res.status(200).json({
+    message: "Note Deleted",
   });
 });
+
 app.patch("/notes/:id", async (req, res) => {
   const { title, desc } = req.body;
   const id = req.params.id;
