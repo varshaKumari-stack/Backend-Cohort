@@ -1,12 +1,40 @@
-# React + Vite
+# Frontend (React + Vite) — Notes CRUD
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend UI for the Day9 Notes CRUD application.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create a note (Title + Description)
+- Fetch and display all notes
+- Update a note (uses browser `prompt()`)
+- Delete a note
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Vite)
+- axios
+
+## Backend API
+
+All requests are sent to the backend running at:
+
+- **Base URL:** `http://localhost:3000`
+
+### Endpoints used
+
+- `GET  /api/notes` (fetch notes)
+- `POST /api/notes` (create note)
+- `PATCH /api/notes/:id` (update note)
+- `DELETE /api/notes/:id` (delete note)
+
+## Run the frontend
+
+1. Go to `frontend/curd/`
+2. Install dependencies:
+   - `npm install`
+3. Start dev server:
+   - `npm run dev`
+
+## Notes
+
+- Make sure the backend server is running on port **3000** before using the frontend.

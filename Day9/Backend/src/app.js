@@ -1,8 +1,12 @@
 const express = require("express");
+const cors = require("cors");
+const path = require("path");
 const noteModel = require("./model/note.model");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
+app.use(cors());
+app.use(express.static("./public"));
 app.post("/api/notes", async (req, res) => {
   const { title, desc } = req.body;
   const note = await noteModel.create({
@@ -36,5 +40,8 @@ app.patch("/api/notes/:id", async (req, res) => {
     message: "Update Successfully Data.",
     note,
   });
+});
+app.use("*name", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "/public/index.html"));
 });
 module.exports = app;
