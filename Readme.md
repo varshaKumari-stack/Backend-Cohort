@@ -17,7 +17,7 @@ This repository contains day-wise backend assignments for the **Backend Cohort**
 - **Day5/**: Notes REST API (improved responses/structure) in memory
 - **Day6/**: Notes API with Express + MongoDB (Mongoose)
 - **Day7/**: Notes CRUD API (Express + MongoDB)
-- **Day8/**: Notes CRUD (Backend + Frontend)
+- **Day8/9**: Notes CRUD (Backend + Frontend)
 
 ## How to Run (Per Day)
 
@@ -43,4 +43,4 @@ Each project runs on **http://localhost:3000** (default).
 ## Notes
 
 - Data is in-memory for Day 3–Day 5, so notes reset when the server restarts.
-- Day 6/7/8 uses MongoDB; make sure `MONGODB_URI` is set in `.env`.
+- Day 6/7/8/9 uses MongoDB; make sure `MONGODB_URI` is set in `.env`.
