@@ -9,9 +9,10 @@ const App = () => {
   }
   useEffect(() => {
     getData();
-  });
+  }, []);
   function submitHandler(e) {
     e.preventDefault();
+   
     const { title, desc } = e.target.elements;
     axios
       .post("http://localhost:3000/api/notes", {
@@ -21,6 +22,7 @@ const App = () => {
       .then((res) => {
         console.log(res.data);
         getData();
+ 
       });
   }
 
