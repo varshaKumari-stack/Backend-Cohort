@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    unique: [true, "username is already exist"],
-    required: [true, "username is required"],
+    unique: [true, " Username is Already Exists"],
+    required: [true, "Username is required"],
   },
   email: {
     type: String,
-    unique: [true, "email is already exists"],
-    required: [true, "email is required"],
+    unique: [true, "EmailId is Already Exists"],
+    required: [true, "EmailId is required"],
   },
   password: {
     type: String,
@@ -21,5 +21,5 @@ const userSchema = new mongoose.Schema({
       "https://ik.imagekit.io/cit2gmzcv/user.webp?updatedAt=1780211314340",
   },
 });
-const userModel = mongoose.model("userData", userSchema);
+const userModel = mongoose.model("data", userSchema);
 module.exports = userModel;

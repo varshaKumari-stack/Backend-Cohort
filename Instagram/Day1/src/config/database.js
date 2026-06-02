@@ -3,4 +3,4 @@ async function connectToDB() {
   await mongoose.connect(process.env.MONGO_URI);
   console.log("Connected to MongoDb");
 }
-module.exports=connectToDB
+module.exports = connectToDB;
