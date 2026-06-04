@@ -120,7 +120,12 @@ Server runs at:
 **Behavior (from code):**
 
 - Image is uploaded to **ImageKit** using `@imagekit/nodejs`
-- The controller currently returns the ImageKit upload response
+- After upload, the controller creates a **MongoDB `post` document** with:
+  - `caption` (from `req.body.caption`)
+  - `imgUrl` (from the ImageKit `file.url`)
+  - `user` (from decoded JWT `id`)
+
+> ⚠️ Note: the controller currently calls `res.send(file)` and then also calls `res.status(201).json(...)`, which can cause a response-flow issue (headers already sent).
 
 **Example (cURL):**
 
@@ -132,5 +137,6 @@ curl -X POST "http://localhost:3000/api/posts/" \
 
 ## Notes / Current Limitations
 
-- `post.models.js` defines `caption`, `imgUrl`, and `user`, but the current `createPostController` does **not** create a MongoDB post document yet—it only uploads the file to ImageKit and returns the upload result.
-- JWT cookie is set on register/login, but no middleware is present in this codebase to protect post routes yet.
+- `createPostController` verifies JWT from the `token` cookie, uploads the image to **ImageKit**, and then creates a **MongoDB `post` document** with `caption`, `imgUrl`, and `user`.
+- ⚠️ Controller issue: `createPostController` currently calls `res.send(file)` **before** `postModel.create(...)` and then also calls `res.status(201).json(...)`. This can lead to a `"headers already sent"` error / broken response flow in practice.
+- JWT cookie is set on register/login, and `POST /api/posts/` expects the cookie to be present (there is no separate route-protection middleware; the check happens inside the controller).

@@ -21,6 +21,16 @@ async function createPostController(req, res) {
     fileName: "Test",
   });
   res.send(file);
+
+  const post = await postModel.create({
+    caption: req.body.caption,
+    imgUrl: file.url,
+    user: decode.id,
+  });
+  res.status(201).json({
+    message: "post create successfully.",
+    post,
+  });
 }
 module.exports = {
   createPostController,
